@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n,m;
+    cin>>n>>m;
+    int a[n][m];
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+    int rowfirst=0, rowend=n-1, colfirst=0, colend=m-1;
+    while(rowfirst<=rowend && colfirst<=colend)
+    {
+        for(int col=rowfirst;col<=colend;col++)
+        {
+            cout<<a[rowfirst][col]<<" ";
+        }
+        rowfirst++;
+        for(int row=rowfirst;row<=rowend;row++)
+        {
+            cout<<a[row][colend]<<" ";
+        }
+        colend--;
+        if(rowfirst<=rowend && colfirst<=colend)
+        {
+            for(int col=colend;col>=colfirst;col--)
+            {
+                cout<<a[rowend][col]<<" ";
+                
+            }
+            rowend--;
+            for(int row=rowend;row>=rowfirst;row--)
+            {
+                cout<<a[row][colfirst]<<" "; 
+                
+            }
+            colfirst++;
+        }
+    }
+    return 0;
+}
+
